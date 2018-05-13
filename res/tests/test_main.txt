@@ -1,0 +1,18 @@
+
+login_infos = {
+
+	database_id = 1
+	
+	login = {
+		username = "Lakkie"
+		password = "notmypassword"
+		user_hash = 4857
+	}
+	
+	login = {
+		username = "SomebodyElse335"
+		password = "apassword"
+		user_hash = 4832
+	}
+
+}
