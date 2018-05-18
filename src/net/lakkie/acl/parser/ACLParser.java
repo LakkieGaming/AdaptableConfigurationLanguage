@@ -64,8 +64,6 @@ public class ACLParser {
 			while (!(token = this.getParser().getLexer().next()).equals("}")) {
 				result.add(this.getParser().getLexer().clearQuotes(token));
 			}
-			// Skip "}" token
-			this.getParser().getLexer().next();
 			return result;
 		}
 
