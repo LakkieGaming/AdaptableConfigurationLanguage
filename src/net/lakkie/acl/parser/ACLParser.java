@@ -94,7 +94,7 @@ public class ACLParser {
 			// This will stop AT the "}" token or EOF
 			while (true) {
 				token = this.getParser().getLexer().getNextToken();
-				if (token.equals("}") || token == null) {
+				if (token == null || token.equals("}")) {
 					break;
 				}
 				reader.onToken(token, this);
