@@ -77,6 +77,10 @@ public class ACLParser {
 		public double readDouble() {
 			return Double.parseDouble(this.readString());
 		}
+		
+		public float readFloat() {
+			return Float.parseFloat(this.readString());
+		}
 
 		public int readInt() {
 			return Integer.parseInt(this.readString());

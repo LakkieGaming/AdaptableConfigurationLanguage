@@ -3,5 +3,6 @@
  * @author Lakkie
  */
 module acl.library {
-	
+	exports net.lakkie.acl.lexer;
+	exports net.lakkie.acl.parser;
 }
