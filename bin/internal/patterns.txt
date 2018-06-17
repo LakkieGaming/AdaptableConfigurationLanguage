@@ -1,3 +1,4 @@
+# Comment matcher
+(#.*)
 # General token matcher
-# First is comments, second is strings, third is tokens
 (#.*(?=\n))|(".*")|([^\s]+)

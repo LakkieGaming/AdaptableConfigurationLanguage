@@ -20,6 +20,7 @@ public class ACLLexer {
 
 	public ACLLexer(InputStream input) {
 		this.readFile(input);
+		System.out.println("THIS IS NEW");
 		// Set up initial tokens
 		if (this.fileValue.replaceAll("\\s", "").equals("")) {
 			// File is empty
@@ -43,8 +44,7 @@ public class ACLLexer {
 			return this.next();
 		}
 		if (amount < 1) {
-			throw new IllegalArgumentException(
-					"Amount of nexts must be equal to or greater than 1");
+			throw new IllegalArgumentException("Amount of nexts must be equal to or greater than 1");
 		}
 		for (int i = 0; i < amount - 1; i++) {
 			this.next();
@@ -69,6 +69,8 @@ public class ACLLexer {
 		}
 		scanner.close();
 		this.fileValue = new String(result);
+		// Clear comments
+		this.fileValue = this.fileValue.replaceAll(ACLPatternLoader.commentMatcher.pattern(), "");
 	}
 
 	public boolean hasNext() {
@@ -89,8 +91,7 @@ public class ACLLexer {
 			}
 			return this.current;
 		}
-		if (!this.hasNext())
-		{
+		if (!this.hasNext()) {
 			return null;
 		}
 		// Shift everything back
@@ -101,14 +102,13 @@ public class ACLLexer {
 			return null;
 		}
 		if (this.callbacks.containsKey(this.current)) {
-			for (IACLTokenCallback callback : this.callbacks
-					.get(this.current)) {
+			for (IACLTokenCallback callback : this.callbacks.get(this.current)) {
 				callback.onTokenReceived();
 			}
 		}
-		if (this.current.startsWith("#")) {
-			return this.getNextToken();
-		}
+//		if (this.current.startsWith("#")) {
+//			return this.getNextToken();
+//		}
 		return this.current;
 	}
 
@@ -121,7 +121,7 @@ public class ACLLexer {
 		chars[chars.length - 1] = '\u16b6';
 		return new String(chars).replaceAll("\u16b6", "");
 	}
-	
+
 	public String getPrevious() {
 		return this.previous;
 	}

@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class ACLPatternLoader {
 
+	public static final Pattern commentMatcher;
 	public static final Pattern tokenMatcher;
 
 	private static Pattern readNextToken(Scanner scanner) {
@@ -19,8 +20,8 @@ public class ACLPatternLoader {
 	}
 
 	static {
-		Scanner scanner = new Scanner(ACLPatternLoader.class
-				.getResourceAsStream("/internal/patterns.txt"));
+		Scanner scanner = new Scanner(ACLPatternLoader.class.getResourceAsStream("/internal/patterns.txt"));
+		commentMatcher = readNextToken(scanner);
 		tokenMatcher = readNextToken(scanner);
 		scanner.close();
 	}
