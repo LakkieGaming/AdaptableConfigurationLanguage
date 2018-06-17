@@ -50,7 +50,7 @@ public class ACLParser {
 		}
 		this.reader.onFinish();
 	}
-	
+
 	public class ACLParserMachine {
 
 		public ACLParser getParser() {
@@ -69,15 +69,14 @@ public class ACLParser {
 
 		public String readString() {
 			// Skip "="
-			String value = this.getParser().getLexer()
-					.clearQuotes(this.getParser().getLexer().next(2));
+			String value = this.getParser().getLexer().clearQuotes(this.getParser().getLexer().next(2));
 			return value;
 		}
 
 		public double readDouble() {
 			return Double.parseDouble(this.readString());
 		}
-		
+
 		public float readFloat() {
 			return Float.parseFloat(this.readString());
 		}
@@ -108,6 +107,11 @@ public class ACLParser {
 			this.enterSection();
 			while (!this.getParser().getLexer().getNextToken().equals("}")) {
 			}
+		}
+
+		public boolean readBoolean() {
+			String token = this.readString();
+			return token.equalsIgnoreCase("true") || token.equalsIgnoreCase("yes");
 		}
 
 	}
