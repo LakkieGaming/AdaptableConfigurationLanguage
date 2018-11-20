@@ -1,2 +1,4 @@
-/net/
 /internal/
+/module-info.class
+/net/
+/tests/

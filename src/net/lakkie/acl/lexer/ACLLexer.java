@@ -20,7 +20,6 @@ public class ACLLexer {
 
 	public ACLLexer(InputStream input) {
 		this.readFile(input);
-		System.out.println("THIS IS NEW");
 		// Set up initial tokens
 		if (this.fileValue.replaceAll("\\s", "").equals("")) {
 			// File is empty
@@ -113,6 +112,9 @@ public class ACLLexer {
 	}
 
 	public String clearQuotes(String string) {
+		if (string == null) {
+			return "";
+		}
 		if (!(string.startsWith("\"") && string.endsWith("\""))) {
 			return string;
 		}
